@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Rodrigo & Luana</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="jason.js">
+</head>
+<body>
+  
+<div class="hero">
+  <h1 >RODRIGO <br> & LUANA</h1>
+  <p>Te amo não somente pelo que és, mas pelo que sou quando estou contigo! Te amo porque me mostraste que o amor verdadeiro existe e que contigo cada momento é eterno. ❤️</p>
+  <button class="btn-red">▶ Reviver Momentos</button>
+  <button class="btn-dark">❤ Favorito</button>
+
+  <div class="slides">
+    <img src="Galeria/foto (17).jpeg" class="active">
+    <img src="Galeria/foto (4).jpeg">
+    <img src="Galeria/foto (28).jpeg">
+    <!-- Adicione mais imagens aqui -->
+  </div>
+</div>
+
+<script>
+let slides = document.querySelectorAll('.slides img');
+let current = 0;
+
+function nextSlide() {
+  slides[current].classList.remove('active');
+  current = (current + 1) % slides.length;
+  slides[current].classList.add('active');
+}
+
+setInterval(nextSlide, 4000); // Muda a cada 4 segundos
+</script>
+
+  <!-- Carrossel estilo Netflix -->
+   <section class="history">
+  <h2>🌟 Populares na nossa história</h2>
+
+  <!-- Carousel com setas -->
+  <div class="carousel-container">
+    <button class="carousel-btn left">&#10094;</button>
+    <div class="carousel">
+      <div class="carousel-track">
+        <img src="Galeria/foto (1).jpeg" alt="Primeiro encontro" data-caption="15/02/25 - Primeiro encontro 💙" data-info="Nos passeamos e conversamos no parque e foi incrível!">
+        <img src="Galeria/WhatsApp Image 2025-09-22 at 19.40.31.jpeg" alt="Primeiro rolê " data-caption="15/02/25 - Primeiro rolê  🌟" data-info="fomos ao Outback">
+        <img src="Galeria/foto (2).jpeg" alt="Primeira vez na minha casa" data-caption="23/02/25 - Primeira vez na minha casa" data-info="Primeiro beijo na minha casa">
+        <img src="Galeria/foto (3).jpeg" alt="Nossa viagem" data-caption="02/03/25 - Nossa primera viagem ✈️" data-info="Viajamos juntos para praia é foi incrivel!">
+        <img src="Galeria/foto (4).jpeg" alt="Nossa viagem" data-caption="06/03/25 - Melhor foto" data-info="Essa é aminha foto favorita!">
+        <img src="Galeria/foto (5).jpeg" alt="Nossa viagem" data-caption="01/03/25 - Na piscina " data-info="Momentos memoraveis nessa piscina">
+        <img src="Galeria/WhatsApp Image 2025-09-22 at 19.56.42.jpeg" alt="Nossa viagem" data-caption="18/04/25 - Nossa primera viagem sozinhos " data-info="Preparei aquela janta top">
+        <img src="Galeria/foto (7).jpeg" alt="Nossa viagem" data-caption="19/04/25 - Nossa primera viagem sozinhos" data-info="Viajamos juntos para guarulhos!">
+        <img src="Galeria/foto (8).jpeg" alt="Nossa viagem" data-caption="19/04/25 - Nossa primera viagem sozinhos" data-info="Aquela fotinha na piscina de lei">
+        <img src="Galeria/foto (49).jpeg" alt="Paris 6" data-caption="02/08/25 - Paris 6 " data-info="Fomos comemorar o nosso aniversario no Paris 6, Lindoo!">
+        <img src="Galeria/foto (10).jpeg" alt="Vila lobos" data-caption="31/05/25 - Nosso passeio a roda rico" data-info="Essa foto ficou maravilhosa">
+        <img src="Galeria/foto (11).jpeg" alt="Vila lobos" data-caption="31/05/25 - Nossa familia" data-info="Temos muito amor por ti Lulu">
+        <img src="Galeria/foto (12).jpeg" alt="Niver da yaya" data-caption="16/06/25 - Niver da yaya" data-info="Ficamos lindos e tivemos uma visão do futuro com a nossa baby">
+        <img src="Galeria/foto (13).jpeg" alt="Ro make" data-caption="17/05/25 - Primeira vez que ela me fez uma make" data-info="Uma DIVA tá">
+        <img src="Galeria/foto (14).jpeg" alt="Merenda" data-caption="06/07/25 - Tio e tia " data-info="Alguém disse merenda?">
+        <img src="Galeria/foto (15).jpeg" alt="arraiá" data-caption="12/07/25 - Nosso primeiro Arraiá" data-info=" Pula fugueria iaiá">
+      </div>
+    </div>
+    <button class="carousel-btn right">&#10095;</button>
+  </div>
+
+  <!-- Lightbox da foto destacada -->
+  <div id="featured" class="featured">
+    <img id="featured-img" src="" alt="">
+    <h3 id="featured-caption"></h3>
+    <p id="featured-info"></p>
+  </div>
+</section>
+<script>
+  const track = document.querySelector('.carousel-track');
+  const images = document.querySelectorAll('.carousel-track img');
+  const featuredImg = document.getElementById('featured-img');
+  const featuredCaption = document.getElementById('featured-caption');
+  const featuredInfo = document.getElementById('featured-info');
+  const btnLeft = document.querySelector('.carousel-btn.left');
+  const btnRight = document.querySelector('.carousel-btn.right');
+
+  let position = 0;
+
+  const moveCarousel = (direction) => {
+    const imgWidth = images[0].clientWidth + 10; // largura + gap
+    if(direction === 'right'){
+      position -= imgWidth;
+      if(Math.abs(position) > track.scrollWidth - track.clientWidth){
+        position = 0; // loop infinito
+      }
+    } else {
+      position += imgWidth;
+      if(position > 0){
+        position = -(track.scrollWidth - track.clientWidth);
+      }
+    }
+    track.style.transform = `translateX(${position}px)`;
+  }
+
+  btnLeft.addEventListener('click', () => moveCarousel('left'));
+  btnRight.addEventListener('click', () => moveCarousel('right'));
+
+  images.forEach(img => {
+    img.addEventListener('click', () => {
+      featuredImg.src = img.src;
+      featuredCaption.textContent = img.dataset.caption;
+      featuredInfo.textContent = img.dataset.info;
+    });
+  });
+</script>
+
+  <!-- contador -->
+    
+   <h1 class="tit contador">Nosso Tempo Juntos ❤️</h1>
+<div class="contador">
+  <div class="unidade">
+    <div class="flip" id="dias"><span class="frente">0</span><span class="tras">0</span></div>
+    <div class="emoji">📅</div>
+  </div>
+  <div class="unidade">
+    <div class="flip" id="horas"><span class="frente">0</span><span class="tras">0</span></div>
+    <div class="emoji">⏰</div>
+  </div>
+  <div class="unidade">
+    <div class="flip" id="minutos"><span class="frente">0</span><span class="tras">0</span></div>
+    <div class="emoji">🕒</div>
+  </div>
+  <div class="unidade">
+    <div class="flip" id="segundos"><span class="frente">0</span><span class="tras">0</span></div>
+    <div class="emoji">💖</div>
+  </div>
+</div>
+
+<script>
+const inicio = new Date("2025-03-22T00:00:00"); // Data de início do relacionamento
+
+function atualizarFlip(id, valor) {
+    const flip = document.getElementById(id);
+    const frente = flip.querySelector('.frente');
+    const tras = flip.querySelector('.tras');
+
+    if(frente.textContent != valor) {
+        tras.textContent = valor;
+        flip.style.transform = 'rotateX(180deg)';
+
+        setTimeout(() => {
+            frente.textContent = valor;
+            flip.style.transform = 'rotateX(0deg)';
+        }, 300);
+    }
+}
+
+function atualizarContador() {
+    const agora = new Date();
+    let diff = agora - inicio;
+
+    const segundos = Math.floor((diff / 1000) % 60);
+    const minutos = Math.floor((diff / (1000 * 60)) % 60);
+    const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+    atualizarFlip('dias', dias);
+    atualizarFlip('horas', horas);
+    atualizarFlip('minutos', minutos);
+    atualizarFlip('segundos', segundos);
+}
+
+setInterval(atualizarContador, 1000);
+atualizarContador();
+</script>
+
+  <!-- Mensagem -->
+  <section class="message">
+    <h2>💌 Minha mensagem</h2>
+    <p>Esses 7 meses foram os mais especiais da minha vida. Obrigado por estar ao meu lado,
+    por cada sorriso, cada abraço e cada momento incrível. Que venham muitos mais! 💙</p>
+  </section>
+
+  <script src="script.js"></script>
+
+  
+
+</body>
+</html>
