@@ -1,0 +1,231 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #030303 0%, #575656 100%);
+    color: #fff;
+    text-align: center;
+    padding: 50px;
+  }
+
+  h1 {
+    font-size: 2em;
+    margin-bottom: 50px;
+    color: #f7f7f7;
+    text-shadow: 2px 2px 8px rgba(240, 5, 5, 0.3);
+    border: 2px #030303;
+  }
+
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    text-align: left;
+  }
+
+  .hero h1 {
+    font-size: 3em;
+    margin-top: 250px;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 2px rgb(0, 0, 0);
+  }
+
+  .hero p {
+    font-size: 1.5em;
+    margin: 20px 10px;
+    max-width: 700px;
+    text-shadow: 2px 2px 2px rgb(0, 0, 0);
+    border: 30px;
+    border-color: #030303;
+  }
+
+  .hero button {
+    margin-right: 1150px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+  padding: 5px 5px 5px 5px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+    transition: 0.3s;
+    
+  }
+
+  
+
+  .btn-red { background: #ff1e1e; color: #fff; }
+  .btn-red:hover { background: #1a1818; }
+
+  .btn-dark { background: #333; color: #fff; }
+  .btn-dark:hover { background: #dd0505; }
+
+  .slides {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
+  .slides img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+  }
+
+  .slides img.active {
+    opacity: 1;
+  }
+
+ /* Carousel básico */
+  .carousel-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .carousel {
+    overflow: hidden;
+    flex: 1;
+  }
+
+  .carousel-track {
+    display: flex;
+    gap: 10px;
+    transition: transform 0.4s ease;
+  }
+
+  .carousel-track img {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .carousel-track img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  }
+
+  /* Botões */
+  .carousel-btn {
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    font-size: 24px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    z-index: 10;
+  }
+
+  .carousel-btn:hover {
+    background: rgba(0,0,0,0.8);
+  }
+
+  /* Featured / Lightbox */
+  .featured {
+    margin-top: 30px;
+    text-align: center;
+  }
+
+  .featured img {
+    max-width: 30%;
+    border-radius: 10px;
+    transition: transform 0.3s;
+  }
+
+  .featured h3 {
+    margin: 10px 0 5px 0;
+    font-size: 1.2rem;
+  }
+
+  .featured p {
+    font-size: 20px;
+    color: #f7efef;
+  }
+
+  @media(max-width: 600px){
+    .carousel-track img{
+      width: 100px;
+      height: 70px;
+    }
+  }
+
+
+
+/* Mensagem */
+.message {
+  background: #111;
+  padding: 40px;
+  text-align: center;
+  border-radius: 12px;
+  margin: 40px;
+}
+.tit  {text-align: center;
+
+}
+
+ .contador {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 2em;
+  }
+
+  .unidade {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 20px 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    position: relative;
+    width: 100px;
+    perspective: 1000px;
+  }
+
+  .flip {
+    display: block;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+
+  .flip span {
+    display: block;
+    backface-visibility: hidden;
+  }
+
+  .flip .frente {
+    background: rgba(255,255,255,0.3);
+    border-radius: 15px;
+    padding: 10px;
+  }
+
+  .flip .tras {
+    transform: rotateX(180deg);
+    background: rgba(255,255,255,0.5);
+    border-radius: 15px;
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  .emoji {
+    font-size: 1.2em;
+    margin-top: 10px;
+    display: block;
+  }
